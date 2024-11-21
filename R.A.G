@@ -35,4 +35,13 @@ self.books_record = []
 def add_to_record(self, book):
         self.books_record.append(book)
 
+        def view_record(self):
+        if not self.books_record:
+            print("\nNo books in your record.\n")
+        else:
+            print(f"\n{self.username}'s Book Record:")
+            for book in self.books_record:
+                status = "✓" if book.read else "x"
+                print(f"{status} {book.title} - {book.description}")
+
 

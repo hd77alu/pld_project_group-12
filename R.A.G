@@ -31,3 +31,8 @@ def __init__(self, username):
 self.username username
 
 self.books_record = []
+
+def add_to_record(self, book):
+        self.books_record.append(book)
+
+

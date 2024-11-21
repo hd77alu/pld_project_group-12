@@ -44,4 +44,16 @@ def add_to_record(self, book):
                 status = "✓" if book.read else "x"
                 print(f"{status} {book.title} - {book.description}")
 
+                def mark_book_status(self, book_title, status):
+        for book in self.books_record:
+            if book.title.lower() == book_title.lower():
+                if status == "read":
+                    book.mark_as_read()
+                elif status == "unread":
+                    book.mark_as_unread()
+                print(f"{book.title} marked as {'read' if status == 'read' else 'unread'}.")
+                return
+        print("\nBook not found in your record.\n")
+
+
 

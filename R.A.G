@@ -56,4 +56,11 @@ def add_to_record(self, book):
         print("\nBook not found in your record.\n")
 
 
-
+class RAG:
+    def __init__(self):
+        self.books = [
+            Book(1, "Rich Dad, Poor Dad", "A book by Robert T. Kiyosaki on financial literacy and investing."),
+            Book(2, "80/20 Principle", "A book by Richard Koch on maximizing productivity by focusing on vital tasks."),
+            Book(3, "Atomic Habits", "A book by James Clear on building effective habits."),
+            Book(4, "Grit: The Power of Passion and Perseverance",
+                 "A book by Angela Duckworth about resilience and determination."),

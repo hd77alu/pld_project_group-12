@@ -82,3 +82,8 @@ class RAG:
         print("This app helps you find books, track your reading progress, and get random recommendations.")
         print("\nProblem Statement:")
         
+        print(
+            "In today's fast-paced age, despite the wealth of knowledge available, many people struggle to find books "
+            "and materials that help them in their personal development journey. This dispersion while searching for "
+            "self-development books can hinder personal growth and the integration of technology in education.")
+        print("\nAbout Our Project - R.A.G:")

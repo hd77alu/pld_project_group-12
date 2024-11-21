@@ -70,3 +70,9 @@ class RAG:
                  "A book by Carol S. Dweck on how mindset shapes success."),
             Book(7, "The 7 Habits of Highly Effective People",
                  "Stephen R. Covey's guide on building personal and professional effectiveness."),
+	    Book(8, "The Four Agreements", "A practical guide by Don Miguel Ruiz on achieving personal freedom."),
+            Book(9, "How to Win Friends and Influence People",
+                 "A classic by Dale Carnegie on improving social and communication skills."),
+            Book(10, "48 Laws of Power", "A book by Robert Greene on mastering power and influence.")
+        ]
+        self.user = None

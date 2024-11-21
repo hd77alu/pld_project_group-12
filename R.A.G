@@ -76,3 +76,9 @@ class RAG:
             Book(10, "48 Laws of Power", "A book by Robert Greene on mastering power and influence.")
         ]
         self.user = None
+
+            def display_intro(self):
+        print(str("Welcome to the R.A.G").center(30, "*"))
+        print("This app helps you find books, track your reading progress, and get random recommendations.")
+        print("\nProblem Statement:")
+        

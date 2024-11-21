@@ -87,3 +87,9 @@ class RAG:
             "and materials that help them in their personal development journey. This dispersion while searching for "
             "self-development books can hinder personal growth and the integration of technology in education.")
         print("\nAbout Our Project - R.A.G:")
+
+         print(
+            "R.A.G stands for Read and Grow. Our mission is to integrate technology into education and support personal growth.")
+        print(
+            "This project aims to empower individuals in their personal development journey by providing a curated list "
+            "of books focused on personal growth and development.")

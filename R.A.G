@@ -107,4 +107,7 @@ class RAG:
         while user_input not in choices:
             user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
         return user_input 
+    
+    def new_tab(self):
+        print("\n\n" + "".ljust(35, "_") + "\nR.A.G (Read & Grow)".ljust(30, "*") + "\n")
 

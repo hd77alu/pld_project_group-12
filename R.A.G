@@ -111,3 +111,29 @@ class RAG:
     def new_tab(self):
         print("\n\n" + "".ljust(35, "_") + "\nR.A.G (Read & Grow)".ljust(30, "*") + "\n")
 
+    def view_books(self):
+        self.new_tab()
+        print("\nBooks List:")
+        validchoices = ""
+        for idx, book in enumerate(self.books, 1):
+            print(f"{book.id}. {book.title} ")
+            validchoices += f"{book.id}"
+        input_number = self.trychoice_input_loop(validchoices, "Please choose the book:")
+        self.new_tab()
+        for idx, book in enumerate(self.books, 1):
+            if book.id == int(input_number):
+                print(f"Book Name: {book.title}\n")
+                print(f"Book description: \n {book.description}")
+                current_book = idx - 1
+        if self.user:
+            input_number = self.trychoice_input_loop("123", "Please choose: \n1. Back \n2. Exit \n3. Add to records \nChoose an option:")
+        else:
+            input_number = self.trychoice_input_loop("12", "Please choose: \n1. Back \n2. Exit \nChoose an option:")
+        if input_number == "2":
+            exit()
+        elif self.user and input_number == "3":
+            selected_book = self.books[current_book]
+            self.user.add_to_record(selected_book)
+            print(f"{selected_book.title} added to your record.")
+
+

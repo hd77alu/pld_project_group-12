@@ -6,36 +6,36 @@ import random
 
 class Book:
 
-def __init__(self, id, title, description):
+    def __init__(self, id, title, description):
 
-self.title = title
+      self.title = title
 
-self.description description
+      self.description description
 
-self.read = False
+      self.read = False
 
-self.id = id
+      self.id = id
 
-def mark_as_read(self):
+    def mark_as_read(self):
 
-self.read = True
+      self.read = True
 
-def mark_as_unread (self):
+    def mark_as_unread (self):
 
-self.read = False
+      self.read = False
 
 class User:
 
-def __init__(self, username):
+    def __init__(self, username):
 
-self.username username
+        self.username username
 
-self.books_record = []
+        self.books_record = []
 
-def add_to_record(self, book):
+    def add_to_record(self, book):
         self.books_record.append(book)
 
-        def view_record(self):
+    def view_record(self):
         if not self.books_record:
             print("\nNo books in your record.\n")
         else:
@@ -44,7 +44,7 @@ def add_to_record(self, book):
                 status = "✓" if book.read else "x"
                 print(f"{status} {book.title} - {book.description}")
 
-                def mark_book_status(self, book_title, status):
+    def mark_book_status(self, book_title, status):
         for book in self.books_record:
             if book.title.lower() == book_title.lower():
                 if status == "read":
@@ -54,7 +54,11 @@ def add_to_record(self, book):
                 print(f"{book.title} marked as {'read' if status == 'read' else 'unread'}.")
                 return
         print("\nBook not found in your record.\n")
-
+    def trychoice_input_loop(self, choices, input_message):
+        user_input = input(input_message + "\n")
+        while user_input not in choices:
+            user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
+        return user_input
 
 class RAG:
     def __init__(self):
@@ -77,7 +81,11 @@ class RAG:
         ]
         self.user = None
 
-            def display_intro(self):
+    def trychoice_input_loop(self, choices, input_message):
+        user_input = input(input_message + "\n")
+        while user_input not in choices:
+            user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
+        return user_input       def display_intro(self):
         print(str("Welcome to the R.A.G").center(30, "*"))
         print("This app helps you find books, track your reading progress, and get random recommendations.")
         print("\nProblem Statement:")
@@ -93,3 +101,10 @@ class RAG:
         print(
             "This project aims to empower individuals in their personal development journey by providing a curated list "
             "of books focused on personal growth and development.")
+
+    def trychoice_input_loop(self, choices, input_message):
+        user_input = input(input_message + "\n")
+        while user_input not in choices:
+            user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
+        return user_input 
+

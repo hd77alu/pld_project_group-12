@@ -156,3 +156,6 @@ class RAG:
             print("Thank you for using R.A.G (Read & Grow)!")
             break
 
+if __name__ == "__main__":
+    app = RAG()
+    app.main_menu()

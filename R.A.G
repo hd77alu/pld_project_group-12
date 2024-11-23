@@ -3,11 +3,12 @@
 The users can view the books list,select a book, mark them as read or unread, request book recommendation, and search for a book using keywords.
 """
 
+
 import random
 
 class Book:
-
     def __init__(self, id, title, description):
+<<<<<<< HEAD
 
       self.title = title
 
@@ -16,21 +17,29 @@ class Book:
       self.read = False
 
       self.id = id
+=======
+        self.title = title
+        self.description = description
+        self.read = False
+        self.id = id
+>>>>>>> 4eb324250b3cf668378e2a5cdec79a5b2ef126a5
 
     def mark_as_read(self):
+        self.read = True
 
-      self.read = True
+    def mark_as_unread(self):
+        self.read = False
 
-    def mark_as_unread (self):
-
-      self.read = False
 
 class User:
-
     def __init__(self, username):
+<<<<<<< HEAD
 
         self.username = username
 
+=======
+        self.username = username
+>>>>>>> 4eb324250b3cf668378e2a5cdec79a5b2ef126a5
         self.books_record = []
 
     def add_to_record(self, book):
@@ -55,11 +64,7 @@ class User:
                 print(f"{book.title} marked as {'read' if status == 'read' else 'unread'}.")
                 return
         print("\nBook not found in your record.\n")
-    def trychoice_input_loop(self, choices, input_message):
-        user_input = input(input_message + "\n")
-        while user_input not in choices:
-            user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
-        return user_input
+
 
 class RAG:
     def __init__(self):
@@ -69,35 +74,29 @@ class RAG:
             Book(3, "Atomic Habits", "A book by James Clear on building effective habits."),
             Book(4, "Grit: The Power of Passion and Perseverance",
                  "A book by Angela Duckworth about resilience and determination."),
-	    Book(5, "The Power of Now",
+            Book(5, "The Power of Now",
                  "A guide by Eckhart Tolle on achieving spiritual enlightenment by living in the present."),
             Book(6, "Mindset: The New Psychology of Success",
                  "A book by Carol S. Dweck on how mindset shapes success."),
             Book(7, "The 7 Habits of Highly Effective People",
                  "Stephen R. Covey's guide on building personal and professional effectiveness."),
-	    Book(8, "The Four Agreements", "A practical guide by Don Miguel Ruiz on achieving personal freedom."),
+            Book(8, "The Four Agreements", "A practical guide by Don Miguel Ruiz on achieving personal freedom."),
             Book(9, "How to Win Friends and Influence People",
                  "A classic by Dale Carnegie on improving social and communication skills."),
             Book(10, "48 Laws of Power", "A book by Robert Greene on mastering power and influence.")
         ]
         self.user = None
 
-    def trychoice_input_loop(self, choices, input_message):
-        user_input = input(input_message + "\n")
-        while user_input not in choices:
-            user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
-        return user_input       def display_intro(self):
+    def display_intro(self):
         print(str("Welcome to the R.A.G").center(30, "*"))
         print("This app helps you find books, track your reading progress, and get random recommendations.")
         print("\nProblem Statement:")
-        
         print(
             "In today's fast-paced age, despite the wealth of knowledge available, many people struggle to find books "
             "and materials that help them in their personal development journey. This dispersion while searching for "
             "self-development books can hinder personal growth and the integration of technology in education.")
         print("\nAbout Our Project - R.A.G:")
-
-         print(
+        print(
             "R.A.G stands for Read and Grow. Our mission is to integrate technology into education and support personal growth.")
         print(
             "This project aims to empower individuals in their personal development journey by providing a curated list "
@@ -107,8 +106,8 @@ class RAG:
         user_input = input(input_message + "\n")
         while user_input not in choices:
             user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
-        return user_input 
-    
+        return user_input
+
     def new_tab(self):
         print("\n\n" + "".ljust(35, "_") + "\nR.A.G (Read & Grow)".ljust(30, "*") + "\n")
 
@@ -136,6 +135,7 @@ class RAG:
             selected_book = self.books[current_book]
             self.user.add_to_record(selected_book)
             print(f"{selected_book.title} added to your record.")
+<<<<<<< HEAD
  
     def main_menu(self):
     while True:
@@ -156,6 +156,29 @@ class RAG:
         elif choice == '3':
             print("Thank you for using R.A.G (Read & Grow)!")
             break
+=======
+
+    def main_menu(self):
+        while True:
+            self.new_tab()
+            self.display_intro()
+            print("\nMain Menu:")
+            print("1. What is our project? & How does it work?")
+            print("2. View the books list")
+            print("3. Exit")
+            print("4. Random recommendation")
+            print("5. View my record")
+            print("6. Keyword Search")
+            choice = input("Choose an option: ")
+            if choice == '1':
+                self.display_intro()
+            elif choice == '2':
+                self.view_books()
+            elif choice == '3':
+                print("Thank you for using R.A.G (Read & Grow)!")
+                break
+
+>>>>>>> 4eb324250b3cf668378e2a5cdec79a5b2ef126a5
 
 if __name__ == "__main__":
     app = RAG()

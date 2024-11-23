@@ -9,8 +9,8 @@ The main menu will include these options for the user to choose from:
 1. What is our project? & How does it work?  [Greeting message to the user with a brief overview of the app features].
 2. View the books list [Display a menu with options of the books that the user which he can choose from & the books description]
 3. Exit [Terminate the program]
-4. *Random recommendation [recommend a random book from our list to the user]
-5. *View my record [The user can sign in & can mark the books as read (✓) or unread (x) to track his progress]
-6. *Keyword Search [The user can search through the app through keywords such as (I want a book about productive habits, I want a book to improve my communication skills….etc).]
+4. Random recommendation [recommend a random book from our list to the user]
+5. View my record [The user can sign in & can mark the books as read (✓) or unread (x) to track his progress]
+6. Keyword Search [The user can search through the app through keywords such as (I want a book about productive habits, I want a book to improve my communication skills….etc).]
 
 

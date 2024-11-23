@@ -3,7 +3,6 @@
 The users can view the books list,select a book, mark them as read or unread, request book recommendation, and search for a book using keywords.
 """
 
-
 import random
 
 class Book:
@@ -68,6 +67,7 @@ class RAG:
                  "A classic by Dale Carnegie on improving social and communication skills."),
             Book(10, "48 Laws of Power", "A book by Robert Greene on mastering power and influence.")
         ]
+
         self.user = None
 
     def display_intro(self):
@@ -92,7 +92,11 @@ class RAG:
         return user_input
 
     def new_tab(self):
-        print("\n\n" + "".ljust(35, "_") + "\nR.A.G (Read & Grow)".ljust(30, "*") + "\n")
+        print("")
+        print("")
+        print("".ljust(35, "_"))
+        print("R.A.G (Read & Grow)".ljust(30, "*"))
+        print("")
 
     def view_books(self):
         self.new_tab()
@@ -115,14 +119,53 @@ class RAG:
         if input_number == "2":
             exit()
         elif self.user and input_number == "3":
-            selected_book = self.books[current_book]
-            self.user.add_to_record(selected_book)
-            print(f"{selected_book.title} added to your record.")
+            try:
+                selected_book = self.books[current_book]
+                self.user.add_to_record(selected_book)
+                print(f"{selected_book.title} added to your record.")
+            except (ValueError, IndexError):
+                print("Invalid selection.")
+            input_number = self.trychoice_input_loop("1", "Please choose: \n1. To go back \nChoose an option:")
+
+    def random_recommendation(self):
+        self.new_tab()
+        book = random.choice(self.books)
+        print("\nRandom Book Recommendation:\n")
+        print(f"{book.title} - {book.description}")
+        input_number = self.trychoice_input_loop("12", "Please choose: \n1. Back \n2. Exit\nChoose an option:")
+        if input_number == "2":
+            exit()
+
+    def sign_in(self, username):
+        self.new_tab()
+        self.user = User(username)
+        print(f"\nWelcome, {username}! You can now add books to your record and track your reading progress.")
+
+    def search_books(self, query):
+        self.new_tab()
+        stop_words = {"i", "and", "or", "the", "a", "an", "of", "in", "to", "with", "book"}
+        keywords = [word for word in query.lower().split() if word not in stop_words]
+        results = []
+        for idx, book in enumerate(self.books, 1):
+            if any(keyword in book.title.lower() or keyword in book.description.lower() for keyword in keywords):
+                results.append(book)
+        if results:
+            print("\nSearch Results:")
+            for book in results:
+                print("")
+                print(f"{book.title} - {book.description}")
+                print("")
+        else:
+            print("")
+            print("No books found matching that description.")
+            print("")
+        input_number = self.trychoice_input_loop("12", "Please choose: \n1. Back \n2. Exit\nChoose an option:")
+        if input_number == "2":
+            exit()
 
     def main_menu(self):
         while True:
             self.new_tab()
-            self.display_intro()
             print("\nMain Menu:")
             print("1. What is our project? & How does it work?")
             print("2. View the books list")
@@ -132,14 +175,40 @@ class RAG:
             print("6. Keyword Search")
             choice = input("Choose an option: ")
             if choice == '1':
-                self.display_intro()
+                self.new_tab()  # Open a new tab for the project info
+                self.display_intro()  # Show the project details
+                input_number = self.trychoice_input_loop("12", "Please choose \n1. Back\n2. Exit\nChoose an option:")
+                if input_number == "1":
+                    continue
+                elif input_number == "2":
+                    print("Thank you for using R.A.G (Read & Grow)!")
+                    exit()
             elif choice == '2':
                 self.view_books()
             elif choice == '3':
                 print("Thank you for using R.A.G (Read & Grow)!")
                 break
-
+            elif choice == '4':
+                self.random_recommendation()
+            elif choice == '5':
+                while self.user == None:
+                    self.new_tab()
+                    print("Please sign in to use this feature.")
+                    username = input("Enter a username to sign in: ")
+                    self.sign_in(username)
+                self.user.view_record()
+                if self.user.books_record:
+                    self.new_tab()
+                    mark_choice = self.trychoice_input_loop("12", "Would you like to mark a book as read/unread? \n1. yes \n2. no): ")
+                    if mark_choice == "1":
+                        book_title = input("Enter the book title: ")
+                        status_input = self.trychoice_input_loop("12", "Mark as read or unread? \n 1. Read \n 2. Unread: ")
+                        status = "read" if status_input == "1" else "unread"
+                        self.user.mark_book_status(book_title, status)
+            elif choice == '6':
+                query = input("Enter a keyword to search for books: ")
+                self.search_books(query)
 
 if __name__ == "__main__":
-    app = RAG()
-    app.main_menu()
+    rag = RAG()
+    rag.main_menu()

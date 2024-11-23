@@ -135,5 +135,16 @@ class RAG:
             selected_book = self.books[current_book]
             self.user.add_to_record(selected_book)
             print(f"{selected_book.title} added to your record.")
-
+ 
+    def main_menu(self):
+    while True:
+        self.new_tab()
+        self.display_intro()
+        print("\nMain Menu:")
+        print("1. What is our project? & How does it work?")
+        print("2. View the books list")
+        print("3. Exit")
+        print("4. Random recommendation")
+        print("5. View my record")
+        print("6. Keyword Search")
 

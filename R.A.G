@@ -8,21 +8,10 @@ import random
 
 class Book:
     def __init__(self, id, title, description):
-<<<<<<< HEAD
-
-      self.title = title
-
-      self.description = description
-
-      self.read = False
-
-      self.id = id
-=======
         self.title = title
         self.description = description
         self.read = False
         self.id = id
->>>>>>> 4eb324250b3cf668378e2a5cdec79a5b2ef126a5
 
     def mark_as_read(self):
         self.read = True
@@ -33,13 +22,7 @@ class Book:
 
 class User:
     def __init__(self, username):
-<<<<<<< HEAD
-
         self.username = username
-
-=======
-        self.username = username
->>>>>>> 4eb324250b3cf668378e2a5cdec79a5b2ef126a5
         self.books_record = []
 
     def add_to_record(self, book):
@@ -135,28 +118,6 @@ class RAG:
             selected_book = self.books[current_book]
             self.user.add_to_record(selected_book)
             print(f"{selected_book.title} added to your record.")
-<<<<<<< HEAD
- 
-    def main_menu(self):
-    while True:
-        self.new_tab()
-        self.display_intro()
-        print("\nMain Menu:")
-        print("1. What is our project? & How does it work?")
-        print("2. View the books list")
-        print("3. Exit")
-        print("4. Random recommendation")
-        print("5. View my record")
-        print("6. Keyword Search")
-                choice = input("Choose an option: ")
-        if choice == '1':
-            self.display_intro()
-        elif choice == '2':
-            self.view_books()
-        elif choice == '3':
-            print("Thank you for using R.A.G (Read & Grow)!")
-            break
-=======
 
     def main_menu(self):
         while True:
@@ -178,7 +139,6 @@ class RAG:
                 print("Thank you for using R.A.G (Read & Grow)!")
                 break
 
->>>>>>> 4eb324250b3cf668378e2a5cdec79a5b2ef126a5
 
 if __name__ == "__main__":
     app = RAG()

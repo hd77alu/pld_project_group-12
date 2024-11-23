@@ -2,40 +2,49 @@
 """RAG is a menu list of 10 interesting books that can support individuals in their journey of personal growth.
 """
 
+# Class to represent a Book
 import random
 
 class Book:
     def __init__(self, id, title, description):
+        # Initialize book with ID, title, description, and read status
         self.title = title
         self.description = description
-        self.read = False
+        self.read = False  # Books are unread by default
         self.id = id
 
     def mark_as_read(self):
+        # Mark the book as read
         self.read = True
 
     def mark_as_unread(self):
+        # Mark the book as unread
         self.read = False
 
-
+# Class to represent a User
 class User:
     def __init__(self, username):
+        # Initialize the user with a username and an empty books record
         self.username = username
         self.books_record = []
 
     def add_to_record(self, book):
+        # Add a book to the user's reading record
         self.books_record.append(book)
 
     def view_record(self):
+        # View the user's book record
         if not self.books_record:
             print("\nNo books in your record.\n")
         else:
             print(f"\n{self.username}'s Book Record:")
+            # Print each book's title and description, along with its read/unread status
             for book in self.books_record:
                 status = "✓" if book.read else "x"
                 print(f"{status} {book.title} - {book.description}")
 
     def mark_book_status(self, book_title, status):
+        # Mark a specific book as read or unread based on its title
         for book in self.books_record:
             if book.title.lower() == book_title.lower():
                 if status == "read":
@@ -47,8 +56,10 @@ class User:
         print("\nBook not found in your record.\n")
 
 
+# Main class for the R.A.G (Read & Grow) application
 class RAG:
     def __init__(self):
+        # A list of books in the R.A.G system
         self.books = [
             Book(1, "Rich Dad, Poor Dad", "A book by Robert T. Kiyosaki on financial literacy and investing."),
             Book(2, "80/20 Principle", "A book by Richard Koch on maximizing productivity by focusing on vital tasks."),
@@ -70,6 +81,7 @@ class RAG:
         self.user = None
 
     def display_intro(self):
+        # Display introductory information about the project
         print(str("Welcome to the R.A.G").center(30, "*"))
         print("This app helps you find books, track your reading progress, and get random recommendations.")
         print("\nProblem Statement:")
@@ -85,12 +97,14 @@ class RAG:
             "of books focused on personal growth and development.")
 
     def trychoice_input_loop(self, choices, input_message):
+        # Helper function to ensure user input is valid
         user_input = input(input_message + "\n")
         while user_input not in choices:
             user_input = input(f"⚠️ Invalid response ⚠️ \n{input_message}\n")
         return user_input
 
     def new_tab(self):
+        # Print a separator to simulate a new tab for better user experience
         print("")
         print("")
         print("".ljust(35, "_"))
@@ -98,6 +112,7 @@ class RAG:
         print("")
 
     def view_books(self):
+        # Display the list of books and handle user interaction
         self.new_tab()
         print("\nBooks List:")
         validchoices = ""
@@ -127,6 +142,7 @@ class RAG:
             input_number = self.trychoice_input_loop("1", "Please choose: \n1. To go back \nChoose an option:")
 
     def random_recommendation(self):
+        # Provide a random book recommendation
         self.new_tab()
         book = random.choice(self.books)
         print("\nRandom Book Recommendation:\n")
@@ -136,11 +152,13 @@ class RAG:
             exit()
 
     def sign_in(self, username):
+        # Sign in the user and create a record for them
         self.new_tab()
         self.user = User(username)
         print(f"\nWelcome, {username}! You can now add books to your record and track your reading progress.")
 
     def search_books(self, query):
+        # Search for books based on a keyword query
         self.new_tab()
         stop_words = {"i", "and", "or", "the", "a", "an", "of", "in", "to", "with", "book"}
         keywords = [word for word in query.lower().split() if word not in stop_words]
@@ -163,6 +181,7 @@ class RAG:
             exit()
 
     def main_menu(self):
+        # Main menu where users can choose actions
         while True:
             self.new_tab()
             print("\nMain Menu:")
@@ -194,8 +213,8 @@ class RAG:
                     self.new_tab()
                     print("Please sign in to use this feature.")
                     username = input("Enter a username to sign in: ")
-                    self.sign_in(username)
-                self.user.view_record()
+                    self.sign_in(username)  # Signing in process
+                self.user.view_record()     # View the user's record of books
                 if self.user.books_record:
                     self.new_tab()
                     mark_choice = self.trychoice_input_loop("12", "Would you like to mark a book as read/unread? \n1. yes \n2. no): ")
@@ -205,9 +224,12 @@ class RAG:
                         status = "read" if status_input == "1" else "unread"
                         self.user.mark_book_status(book_title, status)
             elif choice == '6':
+                # Prompt user to enter a keyword to search for books
                 query = input("Enter a keyword to search for books: ")
+                # Call the method to perform the search
                 self.search_books(query)
 
+# Main entry point of the program
 if __name__ == "__main__":
     rag = RAG()
     rag.main_menu()

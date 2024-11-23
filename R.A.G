@@ -147,4 +147,12 @@ class RAG:
         print("4. Random recommendation")
         print("5. View my record")
         print("6. Keyword Search")
+                choice = input("Choose an option: ")
+        if choice == '1':
+            self.display_intro()
+        elif choice == '2':
+            self.view_books()
+        elif choice == '3':
+            print("Thank you for using R.A.G (Read & Grow)!")
+            break
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""RAG is a menu list of 10 interesting books that can support individuals in their journey of personal growth.
-The users can view the books list,select a book, mark them as read or unread, request book recommendation, and search for a book using keywords.
+"""RAG is a menu list of 10 interesting books that can supportindividuals in their journey of personal growth.
+The user can display the book list, select a book, mark them as read or unread, request book recommendation, and search using keywords.
 """
 
 import random

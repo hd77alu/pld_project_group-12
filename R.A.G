@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """RAG is a menu list of 10 interesting books that can support individuals in their journey of personal growth.
+The users can view the books list,select a book, mark them as read or unread, request book recommendation, and search for a book using keywords.
 """
 
 import random
@@ -10,7 +11,7 @@ class Book:
 
       self.title = title
 
-      self.description description
+      self.description = description
 
       self.read = False
 
@@ -28,7 +29,7 @@ class User:
 
     def __init__(self, username):
 
-        self.username username
+        self.username = username
 
         self.books_record = []
 
